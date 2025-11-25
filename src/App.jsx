@@ -609,7 +609,11 @@ const EditorView = ({ onCancel, onSave }) => {
         </div>
         
         {/* Submit */}
-        <div className="pt-4 border-t border-slate-100 flex justify-end">
+        <div className="pt-4 border-t border-slate-100 flex flex-col items-end">
+           <div className="flex items-center mb-2">
+             <Info size={12} className="text-slate-400 mr-1" />
+             <span className="text-[10px] text-slate-400">※現在はベータ版デモのため、実際には保存されません</span>
+           </div>
            <button 
              onClick={handleSave} 
              disabled={isSaving}
@@ -677,7 +681,7 @@ const JOSCRApp = () => {
 
       {/* Toast Notification */}
       {toast && (
-        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full shadow-lg z-[60] text-sm animate-fade-in flex items-center">
+        <div className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full shadow-lg z-[60] text-sm animate-fade-in flex items-center whitespace-nowrap">
           <Info size={16} className="mr-2" />
           {toast}
         </div>
@@ -709,7 +713,7 @@ const JOSCRApp = () => {
                  <Plus size={14} className="mr-1"/> New Entry
                </button>
              )}
-             <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold border border-slate-600">KI</div>
+             <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-bold border border-slate-600 cursor-pointer hover:bg-slate-600 transition-colors" onClick={() => showToast("ベータ版のため、現在はログイン不要ですべての機能を体験できます")}>KI</div>
           </div>
         </div>
       </header>
@@ -768,7 +772,7 @@ const JOSCRApp = () => {
           <EditorView 
             onCancel={() => setView('home')} 
             onSave={() => {
-              showToast("新しいプロトコルを登録しました！");
+              showToast("【Demo】投稿体験ありがとうございます！正式リリースをお楽しみに（データはリセットされます）");
               setView('home');
             }}
           />
